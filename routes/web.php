@@ -11,6 +11,7 @@ use App\Http\Controllers\Seller\SellerProductController;
 use App\Http\Controllers\Seller\SellerStoreController;
 use App\Http\Controllers\Customer\CustomerMainController;
 use App\Http\Controllers\MasterCategoryController;
+use App\Http\Controllers\MasterSubCategoryController;
 
 
 use App\Http\Controllers\ProfileController;
@@ -53,6 +54,11 @@ Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
         Route::controller(ProductAttributeController::class)->group(function(){
             Route::get('/product_attribute/create','index')->name('product_attribute.create');
             Route::get('/product_attribute/manage','manage')->name('product_attribute.manage');
+            Route::post('/defaultattribute/create','createattribute')->name('attribute.create');
+            Route::get('/defaultattribute/{id}','showattribute')->name('show.attribute');
+            Route::put('/defaultattribute/update/{id}','updateattribute')->name('update.attribute');
+            Route::delete('/defaultattribute/delete/{id}','deleteattribute')->name('delete.attribute');
+
         });
 
         Route::controller(ProductDiscountController::class)->group(function(){
@@ -67,10 +73,17 @@ Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
             Route::delete('/category/delete/{id}','deletecat')->name('delete.cat');
 
         });
+
+        Route::controller(MasterSubCategoryController::class)->group(function(){
+            Route::post('/store/subcategory','storesubcat')->name('store.subcat');
+            Route::get('/subcategory/{id}','showsubcat')->name('show.subcat');
+            Route::put('/subcategory/update/{id}','updatesubcat')->name('update.subcat');
+            Route::delete('/subcategory/delete/{id}','deletesubcat')->name('delete.subcat');
+
+        });
     });
   
 });
-
 
 // vendor routes 
 

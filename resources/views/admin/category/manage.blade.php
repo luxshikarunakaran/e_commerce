@@ -39,7 +39,8 @@ Manage Category - Admin Panel
                                     @csrf
                                     @method('DELETE')
                                     <input type='submit' value="Delete" class="btn btn-danger">
-                                </form></td>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                         

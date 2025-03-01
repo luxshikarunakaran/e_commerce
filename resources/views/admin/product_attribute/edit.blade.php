@@ -1,14 +1,13 @@
 @extends('admin.layouts.layout')
 @section('admin_page_title')
-Create Default Attribute- Admin Panel
+Edit Attribute - Admin Panel
 @endsection
 @section('admin_layout')
-
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Create Default Category</h5>
+                    <h5 class="card-title mb-0">Edit Attribute</h5>
                 </div>
                 <div class="card-body">
                         @if ($errors->any())
@@ -26,15 +25,17 @@ Create Default Attribute- Admin Panel
                                 {{session('success')}}
                             </div>
                         @endif
-                    <form action="{{route('attribute.create')}}" method="POST">
+                    <form action="{{route('update.attribute',$attribute_info->id)}}" method="POST">
                         @csrf
+                        @method('PUT') 
                         <label for="attribute_value" class="fw-bold mb-2">Give Name of Your Attribute</label>
-                        <input type="text" class="form-control" name="attribute_value" placeholder="XL"><br>
+                        <input type="text" class="form-control" name="attribute_value" value="{{$attribute_info->attribute_value}}"><br>
 
-                        <button type="submit" class="btn btn-primary w-100">Add Attribute</button>
+                        <button type="submit" class="btn btn-primary w-100">Update Attribute</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
