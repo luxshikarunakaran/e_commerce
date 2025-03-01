@@ -10,6 +10,7 @@ use App\Http\Controllers\Seller\SellerMainController;
 use App\Http\Controllers\Seller\SellerProductController;
 use App\Http\Controllers\Seller\SellerStoreController;
 use App\Http\Controllers\Customer\CustomerMainController;
+use App\Http\Controllers\MasterCategoryController;
 
 
 use App\Http\Controllers\ProfileController;
@@ -57,6 +58,14 @@ Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
         Route::controller(ProductDiscountController::class)->group(function(){
             Route::get('/discount/create','index')->name('discount.create');
             Route::get('/discount/manage','manage')->name('discount.manage');
+        });
+
+        Route::controller(MasterCategoryController::class)->group(function(){
+            Route::post('/store/category','storecat')->name('store.cat');
+            Route::get('/category/{id}','showcat')->name('show.cat');
+            Route::put('/category/update/{id}','updatecat')->name('update.cat');
+            Route::delete('/category/delete/{id}','deletecat')->name('delete.cat');
+
         });
     });
   
