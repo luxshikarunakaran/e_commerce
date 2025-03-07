@@ -1,13 +1,13 @@
 @extends('seller.layouts.layout')
 @section('seller_page_title')
-Create Seller Store page
+Create Seller New Store page
 @endsection
 @section('seller_layout')
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title mb-0">Create Store</h5>
+                <h5 class="card-title mb-0">Create New Store</h5>
             </div>
             <div class="card-body">
                     @if ($errors->any())
@@ -25,7 +25,7 @@ Create Seller Store page
                             {{session('success')}}
                         </div>
                     @endif
-                <form action="" method="POST">
+                <form action="{{route('create.store')}}" method="POST">
                     @csrf
                     <label for="store_name" class="fw-bold mb-2">Give Name of Your Store</label>
                     <input type="text" class="form-control" name="store_name" placeholder="Lux store"><br>

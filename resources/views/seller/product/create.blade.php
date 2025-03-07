@@ -3,5 +3,5 @@
 Create Seller Product page
 @endsection
 @section('seller_layout')
-Create Seller Product page
+<livewire:category-sub-category/>
 @endsection
